@@ -18,4 +18,10 @@ The objective of this project is to:
 
 In React, the reconciliation process is a pivotal mechanism ensuring the optimization of UI updates. It revolves around the comparison and subsequent updating of the Virtual DOM, predicated on alterations in the application's state.
 
+## Key Steps in React's Reconciliation
+
+### 1. State Change Initiates Reconciliation
+
+When a state change transpires within the application, React initiates the creation of a new Virtual DOM. This newly constructed representation mirrors the updated state of the UI.
+
 
