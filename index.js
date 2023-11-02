@@ -45,3 +45,6 @@ const todos = [
       renderTodoList(); // Re-render the list after addition
     }
   }
+
+  // Initial rendering
+  renderTodoList();
