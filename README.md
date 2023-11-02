@@ -24,4 +24,12 @@ In React, the reconciliation process is a pivotal mechanism ensuring the optimiz
 
 When a state change transpires within the application, React initiates the creation of a new Virtual DOM. This newly constructed representation mirrors the updated state of the UI.
 
+### 2. Diffing Algorithm - Identifying Discrepancies
+
+Employing a diffing algorithm, React meticulously assesses disparities between the recently generated Virtual DOM and its predecessor. The objective is to pinpoint the minimal set of operations necessitated for the modification of the actual DOM.
+
+### 3. Selective Update of the Real DOM
+
+Armed with the knowledge of discrepancies, React strategically applies modifications solely to the pertinent sections of the actual DOM. This judicious approach circumvents the need for a wholesale reconstruction of the UI.
+
 
