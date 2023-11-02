@@ -1,1 +1,1 @@
-# inside-the-react-reconciler
+# Reconciliation: React Under The Hood
