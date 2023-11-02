@@ -6,3 +6,18 @@ const todos = [
     { id: 5, text: "Write code " },
     { id: 6, text: "Ahahha day" },
   ];
+
+  function renderTodoList() {
+    const todoList = document.getElementById("todoList");
+    todoList.innerHTML = ""; // Clear the existing list
+  
+    todos.forEach((todo) => {
+      const todoItem = document.createElement("li");
+      todoItem.className = "todoItem";
+      todoItem.innerHTML = `
+        <span>${todo.text}</span>
+        <button class="deleteButton" onclick="deleteTodo(${todo.id})">Delete</button>
+      `;
+      todoList.appendChild(todoItem);
+    });
+  }
