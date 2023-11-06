@@ -33,23 +33,52 @@ function createElement(tag: string, props: any, children: any[]): HTMLElement {
 }
   
   function renderTodoList(): void {
-    const todoList = document.getElementById("todoList");
-    if (todoList) {
-      todoList.innerHTML = ""; // Clear the existing list
-  
-      todos.forEach((todo) => {
-        const todoItem = document.createElement("li");
-        todoItem.className = "todoItem";
-        todoItem.innerHTML = `
-          <span>${todo.text}</span>
-          <button class="deleteButton" onclick="deleteTodo(${todo.id})">Delete</button>
-        `;
-        if (todoList) {
-          todoList.appendChild(todoItem);
+  console.log('Rendering todo list...');
+  const todoList = document.getElementById("todoList");
+  if (todoList) {
+    // Keep a reference to existing list items
+    const existingListItems: { [key: string]: HTMLElement } = {};
+    todoList.childNodes.forEach(node => {
+      const listItem = node as HTMLElement;
+      const todoId = listItem.getAttribute('data-todo-id');
+      if (todoId) {
+        existingListItems[todoId] = listItem;
+      }
+    });
+
+    todos.forEach(todo => {
+      const todoId = String(todo.id);
+      const existingItem = existingListItems[todoId];
+
+      if (existingItem) {
+        // Update the existing item
+        const span = existingItem.querySelector('span');
+        if (span) {
+          span.textContent = todo.text;
         }
-      });
-    }
+      } else {
+        // Create a new item if it doesn't exist
+        const newListItem = createElement('li', { className: 'todoItem', 'data-todo-id': todoId, key: todoId },
+          [
+            createElement('span', {}, [todo.text]),
+            createElement('button', { className: 'deleteButton' }, ['Delete'])
+          ]
+        );
+        todoList.appendChild(newListItem);
+      }
+    });
+
+    // Remove items that no longer exist in the state
+    Object.keys(existingListItems).forEach(todoId => {
+      if (!todos.some(todo => String(todo.id) === todoId)) {
+        const listItem = existingListItems[todoId];
+        todoList.removeChild(listItem);
+      }
+    });
+
+    console.log('Rendered todo list:', todoList.outerHTML);
   }
+}
   
   function deleteTodo(id: number): void {
     const index = todos.findIndex((todo) => todo.id === id);
