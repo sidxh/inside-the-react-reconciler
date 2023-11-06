@@ -3,14 +3,14 @@ interface Todo {
     text: string;
   }
   
-  const todos: Todo[] = [
-    { id: 1, text: "Basically This Is a " },
-    { id: 2, text: "Build a project" },
-    { id: 3, text: "Write code every day" },
-    { id: 4, text: "Okay Got It" },
-    { id: 5, text: "Write code " },
-    { id: 6, text: "Ahahha day" },
-  ];
+const todos: Todo[] = [
+  { id: 1, text: "First Todo" },
+  { id: 2, text: "Second Todo" },
+  { id: 3, text: "Third Todo" },
+  { id: 4, text: "Fourth Todo" },
+  { id: 5, text: "Fifth Todo" },
+  { id: 6, text: "Sixth Todo" },
+];
   
   function renderTodoList(): void {
     const todoList = document.getElementById("todoList");
