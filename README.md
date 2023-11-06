@@ -52,7 +52,7 @@ By analyzing this project's codebase, you'll gain valuable insights into:
 
 To explore and run the project locally:
 
-1. Clone this repository: `git clone https://github.com/your-username/inside-the-react-reconciler.git`
+1. Clone this repository: `git clone https://github.com/sidxh/inside-the-react-reconciler.git`
 2. Open `index.html` in your preferred web browser.
 
 ## Contributing
