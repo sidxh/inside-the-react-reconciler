@@ -11,6 +11,26 @@ const todos: Todo[] = [
   { id: 5, text: "Fifth Todo" },
   { id: 6, text: "Sixth Todo" },
 ];
+
+function createElement(tag: string, props: any, children: any[]): HTMLElement {
+  const element = document.createElement(tag);
+  Object.keys(props).forEach(key => {
+    if (key === 'data-todo-id') {
+      // Use setAttribute for data attributes
+      element.setAttribute('data-todo-id', props[key]);
+    } else {
+      (element as any)[key] = props[key];
+    }
+  });
+  children.forEach(child => {
+    if (typeof child === 'string') {
+      element.appendChild(document.createTextNode(child));
+    } else {
+      element.appendChild(child);
+    }
+  });
+  return element;
+}
   
   function renderTodoList(): void {
     const todoList = document.getElementById("todoList");
