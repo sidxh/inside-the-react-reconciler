@@ -106,6 +106,33 @@ function addTodo(): void {
   }
 }
   
+document.addEventListener("DOMContentLoaded", () => {
+  console.log('DOM content loaded...');
+
+  // Event delegation for the todo list container
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    console.log('Clicked element:', target);
+
+    if (target.classList.contains('deleteButton')) {
+      const todoId = parseInt(target.parentElement?.getAttribute('data-todo-id') || '', 10);
+      console.log('Todo ID:', todoId);
+
+      if (!isNaN(todoId)) {
+        deleteTodo(todoId);
+      }
+    }
+  });
+
+  // Event listener for the addTodo button
+  const addTodoBtn = document.getElementById("addTodoBtn");
+  if (addTodoBtn) {
+    addTodoBtn.addEventListener("click", () => {
+      console.log('Add Todo button clicked...');
+      addTodo();
+    });
+  }
+
   // Initial rendering
   renderTodoList();
-  
+});
