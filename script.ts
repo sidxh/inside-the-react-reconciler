@@ -80,29 +80,31 @@ function createElement(tag: string, props: any, children: any[]): HTMLElement {
   }
 }
   
-  function deleteTodo(id: number): void {
-    const index = todos.findIndex((todo) => todo.id === id);
-    if (index !== -1) {
-      todos.splice(index, 1);
-      renderTodoList(); // Re-render the list after deletion
-    }
+function deleteTodo(id: number): void {
+  console.log('Deleting todo with ID:', id);
+  const index = todos.findIndex((todo) => todo.id === id);
+  if (index !== -1) {
+    todos.splice(index, 1);
+    renderTodoList(); // Re-render the list after deletion
   }
-  
-  function addTodo(): void {
-    const newTodoInput = document.getElementById("newTodo") as HTMLInputElement;
-    const text = newTodoInput.value.trim();
-  
-    if (text) {
-      const newTodo: Todo = {
-        id: Date.now(),
-        text: text,
-      };
-  
-      todos.push(newTodo);
-      newTodoInput.value = ""; // Clear the input field
-      renderTodoList(); // Re-render the list after addition
-    }
+}
+
+function addTodo(): void {
+  console.log('Adding a new todo...');
+  const newTodoInput = document.getElementById("newTodo") as HTMLInputElement;
+  const text = newTodoInput.value.trim();
+
+  if (text) {
+    const newTodo: Todo = {
+      id: Date.now(),
+      text: text,
+    };
+
+    todos.push(newTodo);
+    newTodoInput.value = ""; // Clear the input field
+    renderTodoList(); // Re-render the list after addition
   }
+}
   
   // Initial rendering
   renderTodoList();
