@@ -36,7 +36,7 @@ The project manifests the reconciliation process through a practical Todo app. K
 
 - **Deletion Functionality:** Witness the reconciliation process in action when deleting Todo items, showcasing how React intelligently updates the UI while maintaining optimal performance.
 
-![image](https://cdn-images-1.medium.com/v2/resize:fit:800/1*iJKfCo2XlFtz-9ST0_HCtA.png)
+![Add Todo Preview](https://i.postimg.cc/654xCb8g/HP1.gif)
 
 ### How React Works Under the Hood
 
